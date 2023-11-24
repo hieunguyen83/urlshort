@@ -1,0 +1,29 @@
+{% extends "nav.html" %}
+{% block main %}
+
+
+<section class="py-5" id="features">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">Just think of a short code to start.</h2></div>
+            <div class="col-lg-8">
+                <div class="row gx-5 row-cols-1 row-cols-md-2">
+                    <div class="col mb-5 h-100">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                        <h2 class="h5">Find code for your URL</h2>
+                            <form action="show-code" method="post">
+
+                                <label for="code">Enter your Code:</label>
+                                <input type="text" name="code" value="" required><br><br>
+
+                                <input class="btn btn-primary btn-lg px-4 me-sm-3" type="submit" value="Find My Code">
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

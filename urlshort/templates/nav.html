@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        {% block title %}{% endblock %}
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="/static/css/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/static/css/styles.css" rel="stylesheet" />
+    </head>
+    <body class="d-flex flex-column h-100">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container px-5">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('urlshort.home')}}"> Home</a></li>
+                            <li class="nav-item"></li> <a class="nav-link" href="{{ url_for('urlshort.about') }}"> About </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ url_for('urlshort.find_code') }}">Find Code </a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </main>
+                
+{% block main %}
+{% endblock %}
+
+{% for m in get_flashed_messages() %}
+{{ m }}
+
+{% endfor %}
+
+
+
+{% if codes %}
+<aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
+    <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
+        <div class="mb-4 mb-xl-0">
+            <div class="fs-3 fw-bold text-white">
+                Your codes:
+            </div>
+       
+            <div class="input-group mb-2">
+                {% for code in codes %}
+                <ul>
+                    <li>
+                        <div ><a class="text-white-50" href="{{ url_for('urlshort.load_code', code=code) }}">
+                            {{ code }}
+                        </a></div>
+                    </li>
+                </ul>
+{% endfor %}
+                
+
+            </div>
+</aside>
+{% endif %}
